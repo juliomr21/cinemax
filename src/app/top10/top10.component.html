@@ -1,0 +1,19 @@
+<h2 style="margin-top: 50px;">Top 10</h2>
+<div *ngFor="let movie of lista">
+    <div class="row  rounded-3 border shadow-lg bg-light "
+    style="width: 480px; height: 100px; margin-left: auto; margin-right: auto;margin-top: 20px; cursor: pointer;"  [routerLink]="['/','movie',movie.id]">
+    <div class="col-lg-4">
+        
+        <img src="https://image.tmdb.org/t/p/original{{movie.poster}}" alt="" style="width: 100px; height: 100px; margin-left: 10px; margin-right: 10px;">
+     
+     
+    </div>
+    <div class="col-lg-8">
+        <h5 style="margin-right: auto;">{{movie.titulo}}</h5>
+     
+     
+        <h6 class="text-muted">{{movie.valor}}/10</h6>
+     </div>
+    </div>
+    
+</div>

@@ -1,0 +1,50 @@
+
+<div >
+  <img src="assets/home.jpg" alt="" style="height: 250px;width: 100%;">
+</div>
+<div style="margin-top: 10px;">
+  <h1 class="text-center">CINEMAX</h1>
+  <h5 class="text-center primary ">Las mejores series y películas al alcance de un click</h5>
+</div>
+<div style="display: flex;margin-top: 50px;width: 85%;margin-left: auto;margin-right: auto; margin-bottom: 50px;">
+ 
+ <input type="text" class="form-control" [(ngModel)]="palabra"
+    style="width: 50%;  margin-right: 10px;  margin-left: auto;">
+ <div style="margin-right: auto;">
+  <button class="btn btn-primary" (click)="search()" [routerLink]="['/','buscar',palabra]">Buscar</button>
+ </div>
+</div>
+
+
+<h4  style="margin-top: 10px; margin-left: 30px;margin-bottom: 25px;">Recomendadas</h4>
+<div class="container">
+  <div  class="row" >
+    <div class="col-lg-3 " *ngFor="let movie of sol.results" style="margin-bottom: 100px;">
+      <div  style=" margin-left: auto; margin-right: auto; width: 100%;">
+  
+        <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"
+          class="bd-placeholder-img shadow" 
+          style="margin-top: 3%; margin-bottom: 3%; cursor: pointer; border-radius: 6px; width: 100%;height: 100%;"  [routerLink]="['/','movie',movie.id]">
+        <div class="" style="margin-top: 3%;">
+          <h6>{{movie.original_title}}</h6>
+          <h6 class="text-muted">{{movie.release_date|date}}</h6>
+          
+        </div>
+        </div>
+  
+    </div>
+    <!-- <div style="display: flex;">
+      <button (click)="navegation('minus')">prev</button>
+      {{pag}}
+      <button (click)="navegation('plus')">next</button>
+    </div> -->
+  
+
+  
+  
+  </div>
+</div>
+
+
+
+

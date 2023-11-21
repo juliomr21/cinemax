@@ -1,0 +1,30 @@
+<div style="background-image: url('assets/home.jpg') ; width: 100%; height: 250px; " class="fixed">
+    <span style="position: absolute; margin-top: 90px; margin-left: 30%;margin-right: auto;" class="text-white"> <h1 class="text-center">CINEMAX</h1>
+     <h5 class="text-center ">Las mejores series y películas al alcance de un click</h5></span>
+     <div style="display:flex;  margin-bottom: 40px; ">
+       <input type="text" class="form-control" [(ngModel)]="palabra"
+         style="width: 50%; margin-left: 280px; margin-right: 10px; position: relative; margin-top: 190px;">
+       <button class="btn btn-primary" style="position: relative; margin-top: 190px;" (click)="search()">Buscar</button>
+     </div>
+   
+   </div>
+<h4 style="margin-top: 10px;">Resultados de buscar: {{palabra}}</h4>   
+<div class="row" style="margin-left: 20px; height: 100%; size: 100%;"  >
+    <div *ngFor="let movie of sol.results" class="col-lg-3" style="margin-bottom: 100px;">
+      <div style=" margin-left: 10px; margin-right: 10px; " class="">
+  
+        <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}"
+          class="bd-placeholder-img shadow" width="80%" height="300px"
+          style="margin-top: 3%; margin-bottom: 3%; cursor: pointer; border-radius: 6px;"  [routerLink]="['/','movie',movie.id]">
+        <div class="" style="margin-top: 3%;">
+          <h6>{{movie.original_title}}</h6>
+          <h6 class="text-muted">{{movie.release_date|date}}</h6>
+          <h6 > {{movie.genre_ids|strgenero:genero.genres }} </h6>
+         
+          <!-- <form> <button class="btn btn-primary" style="margin-top: 3%; margin-bottom: 3%;"
+              [routerLink]="['/','movie',movie.id]">Más detalles »</button></form> -->
+        </div>
+        </div>
+  
+    </div>
+  
