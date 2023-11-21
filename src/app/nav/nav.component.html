@@ -1,37 +1,74 @@
-<nav class="navbar navbar-expand-lg navbar-light   fixed-top " style="background-color: rgb(30, 36, 65);">
+<!-- <nav class="navbar navbar-expand-lg navbar-light   fixed-top " style="background-color: rgb(73, 94, 196);">
 
     <div class="container-fluid">
-        <!-- <img src="assets/logo.svg" alt=""> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
-        style="border:0 ;">
-        <!-- <span> <img src="assets/icon-hamburger.svg" alt=""></span> -->
-    </button>
-    <div class="collapse navbar-collapse row  " id="navbarNavAltMarkup">
-
-        <span class="col-lg-1"></span>
-        <div class="navbar-nav col-lg-4  ">
-            <a class="nav-link text-white " aria-current="page" href="#">Home</a>
-            <a class="nav-link text-white" [routerLink]="['/','favoritas']">Favoritas</a>
-            <a class="nav-link text-white" [routerLink]="['/','top10']">Top10</a>
-            <a class="nav-link text-white" href="#">Blog</a>
-            <a class="nav-link text-white" href="#" >Careers</a>
+      
+        <div style="display: flex;width: 100%;">
+            <div style="margin-left: 3%;cursor: pointer;"[routerLink]="['']">
+                <h3 class="text-white">CINEMAX</h3>
+            </div>
+            <div style="margin-left: auto;margin-right: 15px;">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"  aria-expanded="false" aria-label="Toggle navigation"
+                style="border: transparent;">
+                <span> <img src="assets/icon-hamburger.svg" alt=""></span>
+            </button>
+            </div>
+           
         </div>
-        <span class="col-lg-4"></span>
-        <div class="col-lg-3">
-            <!-- <button class=" btn text-white collapse navbar-collapse "
-            style=" background: linear-gradient(45deg,hsl(136, 65%, 51%),hsl(202, 64%, 63%)) ; border-radius: 3em; " type="submit">Request
-            Invite</button> -->
+      
+        <div class="collapse navbar-collapse row  "   id="navbarNavAltMarkup" style="margin-right: 60px;" >
+
+            <span class="col-lg-1"></span>
+            <div class="navbar-nav col-lg-4  " style="margin-left: 20px;">
+                <a class="nav-link text-white " aria-current="page" href="#">Home</a>
+                <a class="nav-link text-white" [routerLink]="['/','favoritas']">Favoritas</a>
+                <a class="nav-link text-white" aria-current="page" [routerLink]="['/','top10']" >Top10</a>
+                <a class="nav-link text-white" href="#">Blog</a>
+                <a class="nav-link text-white" href="#">Careers</a>
+            </div>
+            <span class="col-lg-4"></span>
+            <div class="col-lg-3">
+            
+
+            </div>
+
+
+        </div>
+
 
     </div>
 
+</nav> -->
 
-</div>
-
-
-</div>
-
+<nav class="navbar" style="background-color: rgb(73, 94, 196);">
+    <div style="display: flex;width: 100%;">
+        <div style="margin-left: 3%;cursor: pointer;"[routerLink]="['']">
+            <h3 class="text-white">CINEMAX</h3>
+        </div>
+        <div class=" d-sm-none " style="margin-left: auto;margin-right: 5%;">
+            <button style="background: transparent;margin-right: 5%;border: transparent;" (click)="toggleNavbar()">
+                <span> <img src="assets/icon-hamburger.svg" alt=""></span>
+            </button>
+        </div>
+        <div class=" d-none d-lg-block " style="margin-left: auto;margin-right: 5%;">
+            <div  style="display: flex;">
+            
+                <a class="nav-link text-white " aria-current="page" href="#">Home</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" [routerLink]="['/','favoritas']">Favoritas</a>
+                <a class="nav-link text-white" style="margin-left: 15px;"  [routerLink]="['/','top10']" >Top10</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" href="#">Blog</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" href="#">Careers</a>
+           
+        </div>
+        </div>
+        
+       
+    </div>
+    <div *ngIf="isNavbarCollapsed" (click)="toggleNavbar()" >
+                <a class="nav-link text-white " style="margin-left: 15px;" href="#">Home</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" [routerLink]="['/','favoritas']">Favoritas</a>
+                <a class="nav-link text-white" style="margin-left: 15px;"  [routerLink]="['/','top10']" >Top10</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" href="#">Blog</a>
+                <a class="nav-link text-white" style="margin-left: 15px;" href="#">Careers</a>
+    </div>
 </nav>
-
-
-

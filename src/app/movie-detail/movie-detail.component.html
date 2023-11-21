@@ -1,9 +1,9 @@
 <!-- {{dataMovie|json}} -->
 
 
-<div class="row">
-    <div class="col-lg-5" style="margin-top: 10%;">
-        <img src="https://image.tmdb.org/t/p/original{{poster}}" class=" shadow" width="350px"
+<div class="row ">
+    <div class="col-lg-5 container" style="margin-top: 10%;">
+        <img src="https://image.tmdb.org/t/p/original{{poster}}" class=" shadow"
             height="500px" style="margin-left:10%; margin-right: 20px; border-radius: 1em;">
       <div class="text-center">
         {{estado}} <button style="border-radius: 50%; background-color:transparent; font-size: 25px;" [ngStyle]="colorFav" (click)="changeColor()">♥</button>
@@ -11,34 +11,37 @@
            
     </div>
 
-    <div class="col-lg-6" style="margin-top: 5%">
+    <div class="col-lg-6 " style="margin-top: 5%">
         <h1 class="text-center" style="margin-left: auto;">{{titulo}} </h1>
         <hr>
 
-        <h3 style="margin-top: 5%;">Vista general</h3>
-        <h5 class="lead">{{dataMovie.overview}}</h5>
-        <div style="display: flex; margin-top: 3%;">
-            <h5 style="margin-right: 10px;">Géneros:</h5>
-            <h5 class="lead" style="margin-top: auto;">{{dataMovie.genres|strgenero}}</h5>
-        </div>
-        <div style="display: flex; margin-top: 3%">
-            <h5 style="margin-right: 10px;">Director:</h5>
-            <h5 class="lead" style="margin-top: auto;">{{actors.crew[1].name}}</h5>
-        </div>
-
-        <div style="display: flex; margin-top: 3%;">
-            <h5 style="margin-right: 10px;">Valoración: </h5>
-            <h5 style="margin-top: auto;" class="lead"> {{dataMovie.vote_average}} ♥</h5>
-        </div>
-
-        <h4 class="text-center">Actores</h4>
-        <hr>
-        <div class="row" style="overflow-y:scroll; height: 200px;">
-            <div *ngFor="let actor of actors.cast" class="col-lg-4"  >
-                {{actor.name}}
+        <h3 class="text-center" style="margin-top: 5%;">Vista general</h3>
+        <h5 class="lead" style="width: 90%;margin-left: auto;margin-right: auto;">{{dataMovie.overview}}</h5>
+        <div  style="width: 90%;margin-left: auto;margin-right: auto;">
+            <div style="display: flex; margin-top: 3%;">
+                <h5 class="text-center">Géneros:</h5>
+                <h5 class="lead" style="margin-top: auto;">{{dataMovie.genres|strgenero}}</h5>
+            </div>
+            <div style="display: flex; margin-top: 3%">
+                <h5 style="margin-right: 10px;">Director:</h5>
+                <h5 class="lead" style="margin-top: auto;">{{actors.crew[1].name}}</h5>
+            </div>
+    
+            <div style="display: flex; margin-top: 3%;">
+                <h5 style="margin-right: 10px;">Valoración: </h5>
+                <h5 style="margin-top: auto;" class="lead"> {{dataMovie.vote_average}} ♥</h5>
+            </div>
+    
+            <h4 class="text-center">Actores</h4>
+            <hr>
+            <div class="row" style="overflow-y:scroll; height: 200px;">
+                <div *ngFor="let actor of actors.cast" class="col-lg-4"  >
+                    {{actor.name}}
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+        
     <hr style="width: 80%; margin-left: auto; margin-right: auto;margin-top: 5%;">
 </div>
 
