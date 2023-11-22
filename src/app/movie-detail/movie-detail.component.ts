@@ -7,9 +7,12 @@ import { ConexionService } from '../conexion.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-   dataMovie:any;
+   dataMovie:mov = { overview:"",
+    genres:[],
+    vote_average:""};
    genere:any;
-   actors:any;
+   actors:any = {cats:[{name:""}],crew: [{gender:1}]};
+   director = '';
    id = '';
    valoracion = [0,1,2,3,4,5,6,7,8,9,10];
    Fav = false;
@@ -40,14 +43,28 @@ export class MovieDetailComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap; this.id = params.id});
     this.http.get_dir(`https://api.themoviedb.org/3/movie/${this.id}?api_key=4286347c81d541f90c33126bb90f293a`).subscribe(
-      res =>{ this.dataMovie = res;  this.poster = this.dataMovie.poster_path; this.titulo = this.dataMovie.original_title;});
+      res =>{ 
+        let aux_Mov:any
+        aux_Mov= res;  this.poster = aux_Mov.poster_path; this.titulo = aux_Mov.original_title;
+        this.dataMovie.genres = aux_Mov.genres;
+        this.dataMovie.overview = aux_Mov.overview;
+        this.dataMovie.vote_average = aux_Mov.vote_average;
+      });
     
     this.http.get_dir('https://api.themoviedb.org/3/genre/movie/list?api_key=4286347c81d541f90c33126bb90f293a&language=en-US').subscribe(
-      res => {this.genere = res; }
+      res_genere => {this.genere = res_genere; }
     );
     
     this.http.get_dir(`http://api.themoviedb.org/3/movie/${this.id}/casts?api_key=4286347c81d541f90c33126bb90f293a`).subscribe(
-      res=> this.actors = res
+      res_actor=>{
+        let aux_actor = res_actor;
+        
+        this.actors = aux_actor;
+        this.director = this.actors.crew[1].name;
+        // this.actors.cats = aux_actor.crew[1].namer;
+        
+
+            console.log(this.director)} 
     );
    
     let temp = JSON.parse(localStorage.getItem('comentario')!);
@@ -63,7 +80,7 @@ export class MovieDetailComponent implements OnInit {
       
     this.showcolor();  
     }
-    console.log(this.aux);
+    // console.log(this.aux);
   }
   showcolor(){
     if(this.Fav)
@@ -111,7 +128,7 @@ export class MovieDetailComponent implements OnInit {
       this.listaComentario.push(comentario_temp);
     }
     
-    console.log(this.listaComentario);
+    // console.log(this.listaComentario);
     localStorage.setItem('comentario',JSON.stringify(this.listaComentario));
 
     this.Fav = !this.Fav; 
@@ -147,7 +164,7 @@ export class MovieDetailComponent implements OnInit {
       this.listaComentario.push(comentario_temp);
     }
     
-    console.log(this.listaComentario);
+    // console.log(this.listaComentario);
     localStorage.setItem('comentario',JSON.stringify(this.listaComentario));
 
   }
@@ -165,4 +182,13 @@ interface Lcomentario{
   valor:number,
   fav:boolean
 }
-
+interface mov{
+  overview:string,
+  genres:any,
+  vote_average:string,
+  
+}
+interface actor{
+  cats:any[],
+  crew:any[]
+}
