@@ -12,7 +12,7 @@ export class MovieDetailComponent implements OnInit {
     vote_average:""};
    genere:any;
    actors:any = {cats:[{name:""}],crew: [{gender:1}]};
-   director = '';
+   director = 'director';
    id = '';
    valoracion = [0,1,2,3,4,5,6,7,8,9,10];
    Fav = false;
